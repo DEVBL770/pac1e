@@ -1,0 +1,80 @@
+.formContainer {
+  background-color: var(--text-light);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  color: var(--text-dark);
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.formHeader h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.formStep {
+  display: flex;
+  flex-direction: column;
+}
+
+.formStep label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.formStep input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+}
+
+.formStep input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+}
+
+.error {
+  color: #d93025;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.prevButton {
+    background-color: #f0f0f0;
+    color: var(--text-dark);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.prevButton:hover {
+    background-color: #e0e0e0;
+}
+
+.successMessage {
+    text-align: center;
+    padding: 20px;
+}
+.successMessage h3 {
+    color: var(--secondary-green);
+    font-size: 24px;
+}

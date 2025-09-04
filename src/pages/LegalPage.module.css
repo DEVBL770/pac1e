@@ -1,0 +1,15 @@
+/* src/pages/LegalPage.module.css */
+.legalContainer {
+  padding: 80px 20px;
+  min-height: 60vh;
+}
+
+.legalContainer h1 {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.legalContainer p {
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
