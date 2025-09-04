@@ -1,15 +1,16 @@
 // src/App.jsx
+
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+// Importer toutes les pages
 import HomePage from './pages/HomePage';
 import MentionsLegales from './pages/MentionsLegales';
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
-import CGU from './pages/CGU';
+import CGU from './pages/CGU'; // Ne pas oublier d'importer CGU !
 
-// Ce composant permet de remonter en haut de la page à chaque changement de route
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -22,7 +23,7 @@ function App() {
   useEffect(() => {
     AOS.init({
       duration: 1000,
-      once: true, // L'animation ne se joue qu'une fois
+      once: true,
     });
   }, []);
 
@@ -31,6 +32,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        {/* Ajouter les routes pour chaque page légale */}
         <Route path="/mentions-legales" element={<MentionsLegales />} />
         <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
         <Route path="/conditions-generales-utilisation" element={<CGU />} />
