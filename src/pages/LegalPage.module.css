@@ -2,6 +2,7 @@
 .legalContainer {
   padding: 80px 20px;
   min-height: 60vh;
+  background-color: #fff;
 }
 
 .legalContainer h1 {
@@ -9,7 +10,18 @@
   text-align: center;
 }
 
-.legalContainer p {
+.legalContainer h2 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 5px;
+}
+
+.legalContainer p, .legalContainer li {
   line-height: 1.8;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+}
+
+.legalContainer ul {
+  padding-left: 20px;
 }
