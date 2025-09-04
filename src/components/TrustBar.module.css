@@ -1,0 +1,20 @@
+.trustBar {
+  background-color: #fff;
+  padding: 20px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee { display: inline-block; }
+.marqueeContent { display: flex; animation: marquee 30s linear infinite; }
+.logo {
+  height: 40px;
+  margin: 0 40px;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.logo:hover { filter: grayscale(0%); opacity: 1; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

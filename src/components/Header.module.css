@@ -1,32 +1,12 @@
 .header {
-  position: sticky;
-  top: 0;
-  width: 100%;
+  position: sticky; top: 0; width: 100%;
   background-color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  padding: 10px 0;
+  backdrop-filter: blur(10px); z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 10px 0;
 }
-
-.headerContent {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-weight: 900;
-  font-size: 24px;
-  color: var(--primary-blue);
-}
-
+.headerContent { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: 900; font-size: 24px; color: var(--primary-blue); }
 @media (max-width: 768px) {
-  .logo {
-    font-size: 20px;
-  }
-  .header :global(.cta-button) { /* Cible une classe globale depuis un module */
-    padding: 8px 16px;
-    font-size: 14px;
-  }
+  .logo { font-size: 20px; }
+  .header :global(.cta-button) { padding: 8px 16px; font-size: 14px; }
 }

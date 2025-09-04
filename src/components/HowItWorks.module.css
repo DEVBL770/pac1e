@@ -1,0 +1,10 @@
+.howItWorks { background-color: #fff; text-align: center; }
+.sectionTitle { font-size: 32px; margin-bottom: 50px; }
+.stepsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.stepCard {
+  background-color: var(--bg-light); padding: 30px;
+  border-radius: 12px; border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stepCard:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.stepCard h3 { margin-top: 0; color: var(--primary-blue); }

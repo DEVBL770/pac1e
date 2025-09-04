@@ -1,0 +1,5 @@
+.benefits { text-align: center; }
+.sectionTitle { font-size: 32px; margin-bottom: 50px; }
+.benefitsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: left;}
+.benefitCard { background-color: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.benefitCard h3 { color: var(--secondary-green); margin-top: 0; }
