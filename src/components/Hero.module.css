@@ -1,15 +1,20 @@
+/* Fichier : src/components/Hero.module.css */
+
 .hero {
-  /* Ancienne ligne à remplacer : */
-  /* background-image: linear-gradient(rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.7)), url('https://images.unsplash.com/photo-1616474138054-73c382a32c25?q=80&w=1920&auto=format&fit=crop'); */
-  
-  /* NOUVELLE LIGNE : utilisez directement le chemin /fond.png */
-  background-image: linear-gradient(rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.7)), url('/fond.png');
-  
-  background-size: cover; /* S'assure que l'image couvre tout l'espace */
-  background-position: center; /* Centre l'image */
+  /*
+    C'EST CETTE LIGNE QUI DÉFINIT L'IMAGE DE FOND.
+    C'est la seule ligne qui change.
+    'url('/fond.png')' fait référence à l'image que vous avez placée dans le dossier /public.
+  */
+  background-image: linear-gradient(rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.123)), url('/fond.jpg');
+
+  /* Le reste des propriétés ne change pas */
+  background-size: cover;
+  background-position: center;
   padding: 100px 0;
   color: var(--text-light);
 }
+
 .heroContent { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
 .leftPanel { flex: 1; max-width: 550px; }
 .title { font-size: 48px; font-weight: 900; line-height: 1.2; margin-bottom: 20px; color: var(--text-light); }

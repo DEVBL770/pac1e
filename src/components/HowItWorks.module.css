@@ -1,10 +1,131 @@
-.howItWorks { background-color: #fff; text-align: center; }
-.sectionTitle { font-size: 32px; margin-bottom: 50px; }
-.stepsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.stepCard {
-  background-color: var(--bg-light); padding: 30px;
-  border-radius: 12px; border: 1px solid var(--border-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.howItWorks { 
+  background-color: #fff; /* On garde le fond blanc pour cette section */
+  text-align: center; 
+  padding-bottom: 120px; /* On ajoute de l'espace en bas */
 }
-.stepCard:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-.stepCard h3 { margin-top: 0; color: var(--primary-blue); }
+
+.sectionTitle { 
+  font-size: 36px; 
+  margin-bottom: 15px;
+  color: var(--primary-blue);
+}
+
+.sectionSubtitle {
+  max-width: 500px;
+  margin: 0 auto 60px auto;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Le conteneur de notre timeline */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* La ligne verticale qui connecte les étapes */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 39px; /* Centré sur l'icône de 80px */
+  width: 2px;
+  background: linear-gradient(var(--secondary-green), var(--cta-orange));
+  border-radius: 2px;
+}
+
+/* La carte de chaque étape */
+.stepCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  position: relative;
+  text-align: left;
+}
+
+/* Le cercle pour l'icône */
+.stepIcon {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  background-color: #fff;
+  border: 2px solid var(--secondary-green);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  z-index: 1; /* Pour être au-dessus de la ligne de timeline */
+  transition: all 0.3s ease;
+}
+
+.stepIcon svg {
+  width: 36px;
+  height: 36px;
+  color: var(--secondary-green);
+  transition: all 0.3s ease;
+}
+
+/* Le conteneur du texte */
+.stepContent {
+  padding-top: 10px;
+  position: relative;
+}
+
+/* Le grand numéro stylisé en arrière-plan */
+.stepNumber {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  font-size: 80px;
+  font-weight: 900;
+  color: var(--bg-light); /* Couleur très claire */
+  z-index: -1;
+  user-select: none; /* Empêche la sélection du texte */
+}
+
+.stepContent h3 { 
+  margin-top: 0; 
+  margin-bottom: 10px;
+  color: var(--primary-blue);
+  font-size: 24px;
+}
+
+.stepContent p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* Effet au survol */
+.stepCard:hover .stepIcon {
+  background-color: var(--secondary-green);
+  border-color: var(--cta-orange);
+  transform: scale(1.1) rotate(15deg);
+}
+
+.stepCard:hover .stepIcon svg {
+  color: #fff;
+}
+
+/* Adaptation pour les écrans mobiles */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 29px; /* Ajusté pour une icône de 60px */
+  }
+  .stepIcon {
+    width: 60px;
+    height: 60px;
+  }
+  .stepIcon svg {
+    width: 28px;
+    height: 28px;
+  }
+  .stepNumber {
+    font-size: 60px;
+    top: -10px;
+    left: -10px;
+  }
+}

@@ -1,0 +1,31 @@
+.btdSection {
+  background: linear-gradient(45deg, var(--bg-light) 0%, #E0F2F1 100%); /* Fond en dégradé subtil vert */
+  padding: 80px 0;
+  text-align: center;
+}
+
+.btdContent {
+  max-width: 800px; /* Contenu plus centré et resserré */
+}
+
+.imageWrapper {
+  margin-bottom: 30px;
+}
+
+.imageWrapper img {
+  max-height: 250px;
+  width: auto;
+}
+
+.title {
+  font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #37474F;
+  margin-bottom: 30px;
+}

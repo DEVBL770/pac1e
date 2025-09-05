@@ -1,5 +1,86 @@
-.benefits { text-align: center; }
-.sectionTitle { font-size: 32px; margin-bottom: 50px; }
-.benefitsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: left;}
-.benefitCard { background-color: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-.benefitCard h3 { color: var(--secondary-green); margin-top: 0; }
+/* On retire le fond sombre pour revenir au fond par défaut du site (--bg-light) */
+.benefits { 
+  text-align: center;
+}
+
+/* Le titre de la section redevient sombre pour être lisible sur fond clair */
+.sectionTitle { 
+  font-size: 36px; 
+  margin-bottom: 60px;
+  color: var(--primary-blue); /* On repasse à la couleur par défaut des titres */
+}
+
+.benefitsGrid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 30px; 
+  text-align: left;
+}
+
+/* Le design de la carte, adapté pour un fond clair */
+.benefitCard {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  
+  background: #ffffff; /* On passe sur un fond blanc solide */
+  border: 1px solid var(--border-color); /* Bordure gris clair standard */
+  padding: 30px;
+  border-radius: 16px;
+  color: var(--text-dark); /* Texte principal en couleur sombre */
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Une ombre subtile pour le relief */
+}
+
+/* L'effet de lumière "aurore" est conservé, il fonctionne très bien sur fond blanc ! */
+.benefitCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(
+    300px circle at var(--mouse-x) var(--mouse-y), 
+    rgba(46, 205, 167, 0.15), /* J'ai changé la lueur en vert pour mieux s'adapter */
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* L'effet au survol est accentué */
+.benefitCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1); /* L'ombre devient plus prononcée */
+  border-color: var(--secondary-green); /* La bordure prend la couleur verte */
+}
+
+.benefitCard:hover::before {
+  opacity: 1;
+}
+
+/* Le titre de la carte redevient sombre */
+.benefitCard h3 {
+  color: var(--primary-blue);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.benefitCard p {
+  line-height: 1.7;
+}
+
+/* Style pour le cercle de l'icône, adapté au fond clair */
+.iconWrapper {
+  width: 60px;
+  height: 60px;
+  /* Fond vert très clair pour s'harmoniser */
+  background: rgba(46, 205, 167, 0.1);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(46, 205, 167, 0.2);
+}

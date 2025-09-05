@@ -1,20 +1,70 @@
+/* Fichier : src/components/TrustBar.module.css (Version mise à jour) */
+
 .trustBar {
   background-color: #fff;
-  padding: 20px 0;
+  padding: 40px 0; /* Un peu plus d'espace vertical pour le zoom */
   overflow: hidden;
   white-space: nowrap;
 }
-.marquee { display: inline-block; }
-.marqueeContent { display: flex; animation: marquee 30s linear infinite; }
-.logo {
-  height: 40px;
-  margin: 0 40px;
-  filter: grayscale(100%);
-  opacity: 0.6;
-  transition: filter 0.3s ease, opacity 0.3s ease;
+
+.marquee {
+  display: inline-block;
 }
-.logo:hover { filter: grayscale(0%); opacity: 1; }
+
+.marqueeContent {
+  display: flex;
+  /* L'animation de défilement infini est toujours là */
+  animation: marquee 30s linear infinite;
+}
+
+.logo {
+  /* 1. Logos plus grands et toujours en couleur */
+  height: 80px; /* Taille augmentée (ajustez si besoin) */
+  margin: 0 50px; /* Espace augmenté */
+  
+  /* On retire le filtre grayscale et l'opacité */
+  transition: transform 0.3s ease; /* Transition douce pour le hover (optionnel) */
+
+  /* 2. Application de DEUX animations à chaque logo */
+  animation: 
+    zoom-in-center linear,  /* L'animation de zoom */
+    spin 8s linear infinite; /* L'animation de rotation continue */
+
+  /* 3. On lie l'animation de zoom au défilement dans la vue */
+  animation-timeline: view(inline);
+  animation-range: contain 25% contain 75%;
+}
+
+/* Optionnel : un petit effet au survol pour l'interaction */
+.logo:hover {
+  transform: scale(1.1); /* Léger zoom supplémentaire au survol */
+}
+
+
+/* Animation pour le défilement infini (inchangée) */
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+
+/* Nouvelle animation pour la rotation continue */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Nouvelle animation pour le zoom au centre */
+@keyframes zoom-in-center {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% { /* Au milieu de son passage à l'écran */
+    transform: scale(1.5); /* Le logo est 50% plus grand */
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
 }
