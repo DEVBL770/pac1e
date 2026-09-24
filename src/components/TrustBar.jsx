@@ -10,19 +10,18 @@ import styles from './TrustBar.module.css';
 
 // MAINTENANT, on importe les images depuis votre dossier local.
 // Assurez-vous que les noms (rge.png, etc.) sont corrects.
-import logoRGE from '../assets/logos/rge.png';
-import logoQualipac from '../assets/logos/qualipac.png';
 import logoCee from '../assets/logos/cee.png';
 import logoMaprimrenov from '../assets/logos/mpr.png';
 import logoAnah from '../assets/logos/anah.png';
 
-// Et on utilise ces images importées dans le tableau.
+// Logos des dispositifs d'aides publiques mobilisables selon l'éligibilité du foyer.
+// NB : les logos RGE et QualiPAC ont été retirés du bandeau car ils désignent des
+// certifications de l'entreprise/installateurs, non démontrées à ce jour. Ils pourront
+// être réintégrés avec les justificatifs de certification correspondants.
 const logos = [
-    { src: logoRGE, alt: 'Certification RGE' },
-    { src: logoQualipac, alt: 'Certification Qualipac' },
-    { src: logoCee, alt: 'Certification CEE' },
-    { src: logoMaprimrenov, alt: 'Logo MPR' },
-    { src: logoAnah, alt: 'Logo ANAH' },
+    { src: logoCee, alt: 'Dispositif des certificats d’économies d’énergie (CEE)' },
+    { src: logoMaprimrenov, alt: 'Dispositif d’aide MaPrimeRénov’' },
+    { src: logoAnah, alt: 'Agence nationale de l’habitat (Anah)' },
 ];
 
 // --- FIN DE LA MODIFICATION ---

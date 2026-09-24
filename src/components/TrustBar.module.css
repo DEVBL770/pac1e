@@ -1,4 +1,4 @@
-/* Fichier : src/components/TrustBar.module.css (Version mise à jour) */
+/* Fichier : src/components/TrustBar.module.css (Version corrigée sans rotation) */
 
 .trustBar {
   background-color: #fff;
@@ -25,10 +25,8 @@
   /* On retire le filtre grayscale et l'opacité */
   transition: transform 0.3s ease; /* Transition douce pour le hover (optionnel) */
 
-  /* 2. Application de DEUX animations à chaque logo */
-  animation: 
-    zoom-in-center linear,  /* L'animation de zoom */
-    spin 8s linear infinite; /* L'animation de rotation continue */
+  /* 2. On applique UNIQUEMENT l'animation de zoom */
+  animation: zoom-in-center linear;
 
   /* 3. On lie l'animation de zoom au défilement dans la vue */
   animation-timeline: view(inline);
@@ -47,13 +45,9 @@
   to { transform: translateX(-50%); }
 }
 
-/* Nouvelle animation pour la rotation continue */
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+/* L'animation pour la rotation continue "spin" a été supprimée. */
 
-/* Nouvelle animation pour le zoom au centre */
+/* Nouvelle animation pour le zoom au centre (conservée) */
 @keyframes zoom-in-center {
   0% {
     transform: scale(1);

@@ -19,6 +19,7 @@
 .leftPanel { flex: 1; max-width: 550px; }
 .title { font-size: 48px; font-weight: 900; line-height: 1.2; margin-bottom: 20px; color: var(--text-light); }
 .subtitle { font-size: 18px; margin-bottom: 30px; line-height: 1.6; }
+.disclaimer { font-size: 13px; line-height: 1.5; opacity: 0.85; margin-top: 24px; max-width: 520px; }
 .benefitsList { list-style: none; padding: 0; font-size: 16px; }
 .benefitsList li { margin-bottom: 10px; }
 .rightPanel { flex: 1; max-width: 450px; }

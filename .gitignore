@@ -80,3 +80,5 @@ web_modules/
 
 # Vite build output
 dist
+# Vercel (fichiers locaux du projet lie)
+.vercel

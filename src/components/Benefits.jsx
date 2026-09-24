@@ -3,9 +3,9 @@ import styles from './Benefits.module.css';
 
 // On ajoute une icône à chaque avantage
 const benefitsData = [
-    { icon: '💰', title: 'Économies Majeures', description: 'Réduisez jusqu\'à 70% sur vos factures de chauffage annuelles.' },
-    { icon: '🏠', title: 'Valorisation Immobilière', description: 'Augmentez la classe énergétique (DPE) et la valeur de votre maison.' },
-    { icon: '쾌', title: 'Confort Toute l\'Année', description: 'Profitez d\'une chaleur douce en hiver et d\'un rafraîchissement en été.' },
+    { icon: '💰', title: 'Des Factures Allégées', description: 'Une pompe à chaleur bien dimensionnée consomme moins qu\'un système au fioul ou électrique. L\'économie réelle dépend de votre logement et de vos usages.' },
+    { icon: '🏠', title: 'Valorisation Immobilière', description: 'Une rénovation énergétique peut améliorer la classe énergétique (DPE) et la valeur de votre maison.' },
+    { icon: '❄️', title: 'Confort Toute l\'Année', description: 'Profitez d\'une chaleur douce en hiver et, selon le modèle, d\'un rafraîchissement en été.' },
     { icon: '🌍', title: 'Geste Écologique', description: 'Utilisez une énergie renouvelable et réduisez votre empreinte carbone.' },
 ];
 

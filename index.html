@@ -2,18 +2,76 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Consentement par défaut (Google Consent Mode v2) : tout refusé tant que
+         le visiteur n'a pas choisi. Le bandeau ConsentBanner met à jour ce choix. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ window.dataLayer.push(arguments); }
+      (function () {
+        var consent = {
+          ad_storage: 'denied',
+          analytics_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          wait_for_update: 500
+        };
+        try {
+          var saved = JSON.parse(localStorage.getItem('ge-consent') || 'null');
+          if (saved) {
+            consent.ad_storage = saved.ads ? 'granted' : 'denied';
+            consent.ad_user_data = saved.ads ? 'granted' : 'denied';
+            consent.ad_personalization = saved.ads ? 'granted' : 'denied';
+            consent.analytics_storage = saved.analytics ? 'granted' : 'denied';
+            delete consent.wait_for_update;
+          }
+        } catch (e) {}
+        gtag('consent', 'default', consent);
+      })();
+    </script>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K35KF9RN');</script>
+
+    <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Remplacez votre chaudière par une pompe à chaleur air/eau et produisez votre eau chaude plus efficacement. Vérifiez votre éligibilité aux aides (MaPrimeRénov', CEE) et demandez un devis personnalisé avec GLOBAL ENVIRONNEMENT." />
+    <link rel="canonical" href="https://global-environnement.fr/" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    
-    <title>MaPACbyGE - Votre Pompe à Chaleur à 1€</title>
+
+    <!-- Données structurées : uniquement des informations réelles et visibles sur le site -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "GLOBAL ENVIRONNEMENT",
+      "url": "https://global-environnement.fr/",
+      "logo": "https://global-environnement.fr/logo.png",
+      "telephone": "+33189213931",
+      "email": "rg@global-environnement.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "112 Avenue de Paris",
+        "postalCode": "94300",
+        "addressLocality": "Vincennes",
+        "addressCountry": "FR"
+      }
+    }
+    </script>
+
+    <title>Pompe à chaleur air/eau et chauffe-eau thermodynamique | GLOBAL ENVIRONNEMENT</title>
   </head>
   <body>
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K35KF9RN"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -16,8 +16,10 @@ const PolitiqueConfidentialite = () => {
         <p>Ces informations sont utilisées pour traiter votre demande de devis, vous contacter et personnaliser votre expérience.</p>
         <h2>3. Stockage des données</h2>
         <p>Vos informations sont transmises de manière sécurisée et stockées dans un fichier Google Sheets géré par notre entreprise, accessible uniquement à nos équipes.</p>
-        <h2>4. Vos droits</h2>
-        <p>Conformément à la loi RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en nous contactant à contact@mapacbyge.fr.</p>
+        <h2>4. Cookies et mesure d'audience</h2>
+        <p>Lors de votre visite, un bandeau vous permet d'accepter, de refuser ou de personnaliser les cookies de mesure d'audience et de suivi publicitaire (déposés via Google Tag Manager). Votre choix est conservé sur votre appareil et peut être modifié à tout moment depuis le lien « Gérer mes cookies » en bas de page.</p>
+        <h2>5. Vos droits</h2>
+        <p>Conformément à la loi RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en nous contactant à rg@global-environnement.com.</p>
       </div>
       <Footer />
     </>

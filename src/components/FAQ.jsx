@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import styles from './FAQ.module.css';
 
 const faqs = [
-  { q: 'L\'offre à 1€ est-elle vraiment réelle ?', a: 'Oui, grâce au cumul des aides de l\'État (MaPrimeRénov\', CEE...), les ménages les plus modestes peuvent bénéficier d\'une installation avec un reste à charge de seulement 1€.' },
-  { q: 'Suis-je éligible ?', a: 'L\'éligibilité dépend de vos revenus, de votre logement et de votre système de chauffage actuel. Remplissez notre formulaire pour une réponse rapide et gratuite.' },
+  { q: 'Puis-je bénéficier des aides de l\'État pour une pompe à chaleur ?', a: 'Selon votre situation, plusieurs dispositifs peuvent s\'appliquer : MaPrimeRénov\', les certificats d\'économies d\'énergie (CEE), la TVA réduite... Leur montant dépend de vos revenus, de votre logement et des travaux réalisés, et les travaux doivent être effectués par un professionnel certifié RGE. Remplissez le formulaire pour une étude de votre éligibilité.' },
+  { q: 'Quel sera mon reste à charge ?', a: 'Il n\'existe pas de prix unique : le reste à charge dépend du montant des travaux, des aides auxquelles vous avez réellement droit et de votre projet. Il est déterminé précisément dans un devis personnalisé, avant tout engagement.' },
+  { q: 'Que se passe-t-il après l\'envoi du formulaire ?', a: 'Un conseiller de GLOBAL ENVIRONNEMENT vous recontacte pour étudier votre situation, puis vous propose une étude et un devis. Vos données sont transmises uniquement à notre équipe (voir notre politique de confidentialité).' },
   { q: 'Combien de temps dure l\'installation ?', a: 'L\'installation d\'une pompe à chaleur air/eau dure généralement entre 1 et 2 jours, selon la complexité du chantier.' },
-  { q: 'Quel entretien pour une pompe à chaleur ?', a: 'Un entretien annuel par un professionnel certifié est obligatoire pour garantir le bon fonctionnement et la longévité de votre installation.' },
+  { q: 'Quel entretien pour une pompe à chaleur ?', a: 'Un entretien annuel par un professionnel qualifié est recommandé pour garantir le bon fonctionnement et la longévité de votre installation.' },
 ];
 
 const FAQItem = ({ faq, index, toggleFAQ, active }) => {

@@ -11,19 +11,16 @@ const MentionsLegales = () => {
         <h1>Mentions Légales</h1>
         <h2>1. Éditeur du site</h2>
         <p>
-          <strong>Raison sociale :</strong> MaPACbyGE<br/>
-          <strong>Forme juridique :</strong> SASU<br/>
-          <strong>Adresse :</strong> 123 Rue de l'Exemple, 75001 Paris, France<br/>
-          <strong>Capital social :</strong> 1 000 €<br/>
-          <strong>RCS :</strong> Paris B 123 456 789<br/>
-          <strong>Email :</strong> contact@mapacbyge.fr
+          <strong>Raison sociale :</strong>GLOBAL ENVIRONNEMENT<br/>
+          <strong>Forme juridique :</strong>SAS<br/>
+          <strong>Adresse :</strong> 112 Avenue de Paris 94300 Vincennes<br/>
+          <strong>Capital social :</strong> 	31 000,00 €<br/>
+          <strong>RCS :</strong> 878 837 475 R.C.S. Creteil<br/>
+          <strong>Email :</strong> rg@global-environnement.com
         </p>
-        <h2>2. Directeur de la publication</h2>
-        <p><strong>Nom :</strong> Jean Dupont</p>
-        <h2>3. Hébergeur du site</h2>
+        <h2>2. Hébergeur du site</h2>
         <p>
-          <strong>Nom :</strong> Vercel Inc.<br/>
-          <strong>Adresse :</strong> 340 S Lemon Ave #4133, Walnut, CA 91789, USA
+          <strong>Vercel Inc.</strong> <br/>
         </p>
       </div>
       <Footer />
