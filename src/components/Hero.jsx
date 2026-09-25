@@ -7,11 +7,12 @@ const Hero = () => {
     <section id="form" className={styles.hero}>
       <div className={`${styles.heroContent} container`}>
         <div className={styles.leftPanel} data-aos="fade-up">
-          <h1 className={styles.title}>Pompe à chaleur et eau chaude : vérifiez vos aides et demandez un devis personnalisé</h1>
+          <h1 className={styles.title}>Pompe à chaleur air/eau et chauffe-eau thermodynamique : vérifiez vos aides et demandez un devis personnalisé</h1>
           <p className={styles.subtitle}>
-            Remplacez votre chaudière par une pompe à chaleur air/eau et produisez votre eau chaude
-            plus efficacement. Selon votre situation, vous pouvez bénéficier d'aides financières
-            (MaPrimeRénov', certificats d'économies d'énergie...).
+            Remplacez votre chaudière par une pompe à chaleur air/eau et, si besoin, un
+            chauffe-eau thermodynamique pour l'eau chaude sanitaire. Selon votre situation,
+            des aides financières peuvent s'appliquer (MaPrimeRénov', certificats d'économies
+            d'énergie, TVA à taux réduit).
           </p>
           <ul className={styles.benefitsList}>
             <li>✅ Réduction possible de vos consommations de chauffage</li>
@@ -21,7 +22,8 @@ const Hero = () => {
           <p className={styles.disclaimer}>
             Le montant des aides et votre reste à charge dépendent de vos revenus, de votre
             logement, des travaux réalisés et de votre éligibilité réelle aux dispositifs en
-            vigueur. Chaque projet fait l'objet d'un devis personnalisé.
+            vigueur. Chaque projet fait l'objet d'un devis personnalisé, détaillant
+            équipements, pose, aides mobilisables et reste à charge exact, avant tout engagement.
           </p>
         </div>
         <div className={styles.rightPanel} data-aos="fade-up" data-aos-delay="200">

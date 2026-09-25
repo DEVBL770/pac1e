@@ -11,13 +11,13 @@ const BtdSection = () => {
         <div className={styles.imageWrapper}>
             <img src={btdImage} alt="Ballon thermodynamique pour l'eau chaude sanitaire" />
         </div>
-        <h2 className={styles.title}>Complétez votre installation avec l'eau chaude sanitaire</h2>
+        <h2 className={styles.title}>Complétez votre installation avec un chauffe-eau thermodynamique</h2>
         <p className={styles.description}>
           Un chauffe-eau thermodynamique produit votre eau chaude en récupérant les calories de
           l'air : il consomme généralement moins qu'un chauffe-eau électrique classique.
           Demandez une étude personnalisée pour connaître le gain applicable à votre foyer.
         </p>
-        <a href="#form" className="cta-button">En savoir plus</a>
+        <a href="#form" className="cta-button">Vérifier mon éligibilité</a>
       </div>
     </section>
   );
