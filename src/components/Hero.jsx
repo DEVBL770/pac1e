@@ -14,6 +14,13 @@ const Hero = () => {
             des aides financières peuvent s'appliquer (MaPrimeRénov', certificats d'économies
             d'énergie, TVA à taux réduit).
           </p>
+          <p className={styles.oneEuroMention}>
+            <strong>Une pompe à chaleur à 1&nbsp;€&nbsp;?</strong>{' '}
+            Vérifiez si ce reste à charge est possible pour votre projet.
+          </p>
+          <p className={styles.oneEuroCaveat}>
+            Selon votre éligibilité et le devis&nbsp;; montant non garanti.
+          </p>
           <ul className={styles.benefitsList}>
             <li>✅ Réduction possible de vos consommations de chauffage</li>
             <li>✅ Valorisation de votre bien</li>
@@ -24,11 +31,6 @@ const Hero = () => {
             logement, des travaux réalisés et de votre éligibilité réelle aux dispositifs en
             vigueur. Chaque projet fait l'objet d'un devis personnalisé, détaillant
             équipements, pose, aides mobilisables et reste à charge exact, avant tout engagement.
-          </p>
-          <p className={styles.disclaimer}>
-            <strong>Vous avez entendu parler d'une pompe à chaleur à 1&nbsp;€&nbsp;?</strong>{' '}
-            Vérifiez ce que votre projet vous coûterait réellement, aides et éventuelles
-            remises comprises.
           </p>
         </div>
         <div className={styles.rightPanel} data-aos="fade-up" data-aos-delay="200">
