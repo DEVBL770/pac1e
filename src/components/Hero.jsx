@@ -25,6 +25,11 @@ const Hero = () => {
             vigueur. Chaque projet fait l'objet d'un devis personnalisé, détaillant
             équipements, pose, aides mobilisables et reste à charge exact, avant tout engagement.
           </p>
+          <p className={styles.disclaimer}>
+            <strong>Vous avez entendu parler d'une pompe à chaleur à 1&nbsp;€&nbsp;?</strong>{' '}
+            Vérifiez ce que votre projet vous coûterait réellement, aides et éventuelles
+            remises comprises.
+          </p>
         </div>
         <div className={styles.rightPanel} data-aos="fade-up" data-aos-delay="200">
           <MultiStepForm />
