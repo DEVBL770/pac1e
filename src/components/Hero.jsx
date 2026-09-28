@@ -7,30 +7,16 @@ const Hero = () => {
     <section id="form" className={styles.hero}>
       <div className={`${styles.heroContent} container`}>
         <div className={styles.leftPanel} data-aos="fade-up">
-          <h1 className={styles.title}>Pompe à chaleur air/eau et chauffe-eau thermodynamique : vérifiez vos aides et demandez un devis personnalisé</h1>
+          <h1 className={styles.title}>Pompe à chaleur : jusqu'à 12 000 € d'aides cumulées possibles*</h1>
           <p className={styles.subtitle}>
-            Remplacez votre chaudière par une pompe à chaleur air/eau et, si besoin, un
-            chauffe-eau thermodynamique pour l'eau chaude sanitaire. Selon votre situation,
-            des aides financières peuvent s'appliquer (MaPrimeRénov', certificats d'économies
-            d'énergie, TVA à taux réduit).
+            Bénéficiez des aides mobilisables pour votre projet : MaPrimeRénov', primes CEE
+            et, selon votre situation, aides locales. Étudiez votre pompe à chaleur air/eau,
+            avec ou sans chauffe-eau thermodynamique.
           </p>
-          <p className={styles.oneEuroMention}>
-            <strong>Une pompe à chaleur à 1&nbsp;€&nbsp;?</strong>{' '}
-            Vérifiez si ce reste à charge est possible pour votre projet.
-          </p>
-          <p className={styles.oneEuroCaveat}>
-            Selon votre éligibilité et le devis&nbsp;; montant non garanti.
-          </p>
-          <ul className={styles.benefitsList}>
-            <li>✅ Réduction possible de vos consommations de chauffage</li>
-            <li>✅ Valorisation de votre bien</li>
-            <li>✅ Un geste pour la planète</li>
-          </ul>
-          <p className={styles.disclaimer}>
-            Le montant des aides et votre reste à charge dépendent de vos revenus, de votre
-            logement, des travaux réalisés et de votre éligibilité réelle aux dispositifs en
-            vigueur. Chaque projet fait l'objet d'un devis personnalisé, détaillant
-            équipements, pose, aides mobilisables et reste à charge exact, avant tout engagement.
+          <p className={styles.footnote}>
+            * Le montant total dépend de votre éligibilité et des aides effectivement
+            accordées à votre projet, en cumulant les dispositifs applicables. Votre devis
+            détaille votre reste à charge exact avant tout engagement.
           </p>
         </div>
         <div className={styles.rightPanel} data-aos="fade-up" data-aos-delay="200">
