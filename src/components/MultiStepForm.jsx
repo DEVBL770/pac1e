@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './MultiStepForm.module.css';
 
 const incomeCeilings = {
@@ -74,6 +74,7 @@ const MultiStepForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const submittingRef = useRef(false);
 
   const checkEligibility = (currentData) => {
     if (currentData.propertyStatus === 'Locataire') {
@@ -153,7 +154,9 @@ const MultiStepForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isSubmitting) return;
+    // Garde synchrone : un double clic dans le meme cycle ne doit pas re-soumettre.
+    if (submittingRef.current) return;
+    submittingRef.current = true;
     setIsSubmitting(true);
     try {
       const response = await fetch('/api/send', {
@@ -172,6 +175,7 @@ const MultiStepForm = () => {
 
       setIsSubmitted(true);
     } catch (error) {
+      submittingRef.current = false; // autorise une nouvelle tentative apres echec
       setErrors({ submit: 'Une erreur est survenue lors de l\'envoi. Vérifiez votre connexion puis réessayez : votre demande n\'a pas été enregistrée.' });
     } finally { setIsSubmitting(false); }
   };
@@ -184,7 +188,8 @@ const MultiStepForm = () => {
           <p>
             Merci {formData.name.split(' ')[0]} ! Votre demande de devis a bien été enregistrée.
             Un conseiller de <strong>GLOBAL ENVIRONNEMENT</strong> vous recontactera au numéro
-            indiqué pour étudier votre projet et vos aides éventuelles.
+            indiqué (sous 5 jours ouvrés au maximum) pour étudier votre projet et vos aides
+            éventuelles.
           </p>
           <p className={styles.successNote}>
             Une question en attendant ? Appelez-nous au{' '}
@@ -336,6 +341,14 @@ const MultiStepForm = () => {
                   })}
                 </ul>
                 {errors.submit && <p className={styles.error} role="alert">{errors.submit}</p>}
+                <p className={styles.legalNotice}>
+                  En cliquant sur « Envoyer ma demande de devis », vous acceptez d'être
+                  recontacté(e) par GLOBAL ENVIRONNEMENT <strong>uniquement au sujet de votre
+                  projet</strong> (pompe à chaleur et/ou chauffe-eau thermodynamique), dans un
+                  délai maximum de 5 jours ouvrés. Vos données ne sont pas cédées à des
+                  partenaires pour d'autres sollicitations. Consultez notre{' '}
+                  <a href="/politique-de-confidentialite">politique de confidentialité</a>.
+                </p>
             </div>
         )}
 

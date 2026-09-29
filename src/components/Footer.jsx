@@ -28,6 +28,11 @@ const Footer = () => {
                                 Gérer mes cookies
                             </button>
                         </li>
+                        <li>
+                            <a href="https://france-renov.gouv.fr/" target="_blank" rel="noopener noreferrer">
+                                France Rénov' (portail public des aides)
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div className={styles.footerColumn}>

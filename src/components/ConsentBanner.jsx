@@ -3,10 +3,20 @@ import { Link } from 'react-router-dom';
 import styles from './ConsentBanner.module.css';
 
 const STORAGE_KEY = 'ge-consent';
+const SIX_MONTHS_MS = 180 * 24 * 3600 * 1000;
+
+const readValidConsent = () => {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+    if (saved && saved.t && Date.now() - saved.t < SIX_MONTHS_MS) return saved;
+    if (saved) localStorage.removeItem(STORAGE_KEY);
+  } catch (e) {}
+  return null;
+};
 
 const applyConsent = (prefs) => {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...prefs, t: Date.now() }));
   } catch (e) {}
   if (typeof window.gtag === 'function') {
     window.gtag('consent', 'update', {
@@ -26,10 +36,7 @@ const ConsentBanner = () => {
   useEffect(() => {
     const open = () => setVisible(true);
     window.addEventListener('ge-open-consent', open);
-    let saved = null;
-    try {
-      saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
-    } catch (e) {}
+    const saved = readValidConsent();
     if (saved) {
       setPrefs(saved);
     } else {

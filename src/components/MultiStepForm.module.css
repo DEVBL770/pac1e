@@ -100,6 +100,8 @@
 }
 
 .error { color: #d93025; font-size: 12px; margin: -10px 0 0 0; }
+.legalNotice { font-size: 12.5px; line-height: 1.5; color: #555; margin: 0; }
+.legalNotice a { color: var(--primary-blue); }
 
 .buttonGroup { 
   display: flex; 

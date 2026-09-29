@@ -5,6 +5,8 @@
 .faqQuestion {
   padding: 20px; font-weight: 700; cursor: pointer;
   display: flex; justify-content: space-between; align-items: center;
+  width: 100%; background: none; border: none;
+  font: inherit; font-weight: 700; text-align: left; color: inherit;
 }
 .arrow { font-size: 24px; color: var(--cta-orange); }
 .faqAnswer {

@@ -18,12 +18,16 @@
         };
         try {
           var saved = JSON.parse(localStorage.getItem('ge-consent') || 'null');
-          if (saved) {
+          // Choix valable 6 mois (recommandation CNIL) : au-dela, nouveau consentement requis.
+          var valid = saved && saved.t && (Date.now() - saved.t) < 180 * 24 * 3600 * 1000;
+          if (valid) {
             consent.ad_storage = saved.ads ? 'granted' : 'denied';
             consent.ad_user_data = saved.ads ? 'granted' : 'denied';
             consent.ad_personalization = saved.ads ? 'granted' : 'denied';
             consent.analytics_storage = saved.analytics ? 'granted' : 'denied';
             delete consent.wait_for_update;
+          } else if (saved) {
+            localStorage.removeItem('ge-consent');
           }
         } catch (e) {}
         gtag('consent', 'default', consent);

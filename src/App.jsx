@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import MentionsLegales from './pages/MentionsLegales';
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
 import CGU from './pages/CGU';
+import PageIntrouvable from './pages/PageIntrouvable';
 import ConsentBanner from './components/ConsentBanner';
 
 function ScrollToTop() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/mentions-legales" element={<MentionsLegales />} />
         <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
         <Route path="/conditions-generales-utilisation" element={<CGU />} />
+        <Route path="*" element={<PageIntrouvable />} />
       </Routes>
       <ConsentBanner />
     </Router>
