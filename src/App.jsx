@@ -18,6 +18,22 @@ function ScrollToTop() {
   return null;
 }
 
+export function AppContent() {
+  return (
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/mentions-legales" element={<MentionsLegales />} />
+        <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
+        <Route path="/conditions-generales-utilisation" element={<CGU />} />
+        <Route path="*" element={<PageIntrouvable />} />
+      </Routes>
+      <ConsentBanner />
+    </>
+  );
+}
+
 function App() {
   useEffect(() => {
     AOS.init({
@@ -29,15 +45,7 @@ function App() {
 
   return (
     <Router>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/mentions-legales" element={<MentionsLegales />} />
-        <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
-        <Route path="/conditions-generales-utilisation" element={<CGU />} />
-        <Route path="*" element={<PageIntrouvable />} />
-      </Routes>
-      <ConsentBanner />
+      <AppContent />
     </Router>
   );
 }
