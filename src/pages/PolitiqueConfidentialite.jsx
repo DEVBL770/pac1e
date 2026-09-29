@@ -14,8 +14,8 @@ const PolitiqueConfidentialite = () => {
         <h2>1. Responsable du traitement</h2>
         <p>
           Les traitements décrits ci-dessous sont mis en œuvre par la société ISOLTIME,
-          exploitant le site sous la marque GLOBAL ENVIRONNEMENT (SAS, CS 60002, 112 avenue
-          de Paris, 94300 Vincennes — voir nos{' '}
+          exploitant le site sous son nom commercial GLOBAL ENVIRONNEMENT (SAS, CS 60002, 112
+          avenue de Paris, 94300 Vincennes — voir nos{' '}
           <a href="/mentions-legales">mentions légales</a>).
           Contact pour toute question relative à vos données : rg@global-environnement.com.
         </p>

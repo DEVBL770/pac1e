@@ -12,8 +12,9 @@ const MentionsLegales = () => {
         <h1>Mentions Légales</h1>
         <h2>1. Éditeur du site</h2>
         <p>
-          Le site global-environnement.fr est exploité sous la marque commerciale{' '}
-          <strong>GLOBAL ENVIRONNEMENT</strong> par la société :<br/>
+          Le site global-environnement.fr est édité par la société ISOLTIME et exploité sous le
+          nom commercial <strong>GLOBAL ENVIRONNEMENT</strong>, nom commercial de son établissement
+          secondaire (55 rue Cartier Bresson, 93500 Pantin — SIRET 878 837 475 00028).<br/>
           <strong>Raison sociale :</strong> ISOLTIME<br/>
           <strong>Forme juridique :</strong> SAS<br/>
           <strong>Capital social :</strong> 31 000,00 €<br/>
@@ -25,7 +26,10 @@ const MentionsLegales = () => {
           <strong>Email :</strong> rg@global-environnement.com
         </p>
         <h2>2. Direction de la publication</h2>
-        <p>LK CONSEIL, en sa qualité de Président de la société ISOLTIME.</p>
+        <p>
+          Le directeur de la publication est Levi KATAN, représentant légal de la société
+          LK CONSEIL, présidente d'ISOLTIME.
+        </p>
         <h2>3. Hébergeur du site</h2>
         <p>
           <strong>Vercel Inc.</strong>, 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis —{' '}

@@ -14,8 +14,8 @@ const CGU = () => {
         <h2>Article 1 : Objet</h2>
         <p>
           Les présentes conditions définissent les modalités d'utilisation du site
-          global-environnement.fr, site de présentation édité par la société ISOLTIME sous la
-          marque GLOBAL ENVIRONNEMENT. Elles ne constituent ni un devis ni des conditions
+          global-environnement.fr, site de présentation édité par la société ISOLTIME sous son
+          nom commercial GLOBAL ENVIRONNEMENT. Elles ne constituent ni un devis ni des conditions
           générales de vente de travaux : toute prestation fait l'objet d'un devis écrit,
           présenté et accepté séparément.
         </p>
