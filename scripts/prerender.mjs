@@ -93,12 +93,27 @@ async function main() {
   const { server, port } = await serve();
 
   let browser;
+  const launch = () => puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
   try {
-    browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+    browser = await launch();
   } catch (e) {
-    console.warn('Pre-rendu ignore (navigateur indisponible) :', e.message);
-    server.close();
-    return; // ne casse pas le build
+    // Sur Vercel (et tout CI), Chrome n'est pas toujours present : installation explicite puis nouvel essai.
+    console.warn('Navigateur absent, installation de Chrome pour le pre-rendu...');
+    const { execSync } = await import('node:child_process');
+    try {
+      execSync('npx puppeteer browsers install chrome', { stdio: 'inherit' });
+      browser = await launch();
+    } catch (e2) {
+      server.close();
+      // Sur Vercel, un echec du pre-rendu doit casser le build plutot que
+      // publier silencieusement le site non pre-rendu.
+      if (process.env.VERCEL) {
+        console.error('ECHEC PRE-RENDU EN BUILD VERCEL :', e2.message);
+        process.exit(1);
+      }
+      console.warn('Pre-rendu ignore (navigateur indisponible) :', e2.message);
+      return;
+    }
   }
 
   try {
@@ -129,5 +144,6 @@ async function main() {
 
 main().catch((e) => {
   console.warn('Pre-rendu ignore (erreur) :', e.message);
-  process.exit(0); // ne casse pas le build Vercel
+  // Sur Vercel, l'echec du pre-rendu est bloquant (ne pas publier un site non pre-rendu).
+  process.exit(process.env.VERCEL ? 1 : 0);
 });
