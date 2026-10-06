@@ -19,8 +19,10 @@ const Hero = () => {
             détaille votre reste à charge exact avant tout engagement.
           </p>
         </div>
-        <div id="form" className={styles.rightPanel} data-aos="fade-up" data-aos-delay="200">
-          <MultiStepForm />
+        <div id="form" className={styles.rightPanel}>
+          <div data-aos="fade-up" data-aos-delay="200">
+            <MultiStepForm />
+          </div>
         </div>
       </div>
     </section>
