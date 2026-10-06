@@ -22,7 +22,7 @@
 .footnote { font-size: 14px; font-weight: 500; line-height: 1.5; opacity: 0.9; margin: 0; max-width: 520px; }
 .rightPanel { flex: 1; max-width: 450px; }
 @media (max-width: 992px) {
-  .hero { padding: 24px 0 40px; }
+  .hero { padding: 24px 0 40px; scroll-margin-top: -160px; }
   .heroContent { flex-direction: column; gap: 0; text-align: center; }
   .leftPanel { display: contents; }
   .title { order: 1; width: 100%; font-size: 30px; margin-bottom: 16px; }
