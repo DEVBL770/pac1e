@@ -4,7 +4,7 @@ import styles from './Hero.module.css';
 
 const Hero = () => {
   return (
-    <section id="form" className={styles.hero}>
+    <section className={styles.hero}>
       <div className={`${styles.heroContent} container`}>
         <div className={styles.leftPanel} data-aos="fade-up">
           <h1 className={styles.title}>Pompe à chaleur : jusqu'à 12 000 € d'aides cumulées possibles*</h1>
@@ -19,8 +19,10 @@ const Hero = () => {
             détaille votre reste à charge exact avant tout engagement.
           </p>
         </div>
-        <div className={styles.rightPanel} data-aos="fade-up" data-aos-delay="200">
-          <MultiStepForm />
+        <div id="form" className={styles.rightPanel}>
+          <div data-aos="fade-up" data-aos-delay="200">
+            <MultiStepForm />
+          </div>
         </div>
       </div>
     </section>

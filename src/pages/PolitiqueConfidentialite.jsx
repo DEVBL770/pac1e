@@ -21,11 +21,11 @@ const PolitiqueConfidentialite = () => {
         </p>
 
         <h2>2. Données collectées et finalités</h2>
-        <p>Via notre formulaire en plusieurs étapes, nous collectons uniquement :</p>
+        <p>Via notre formulaire de demande d'étude, nous collectons uniquement :</p>
         <ul>
-          <li><strong>Votre logement</strong> : code postal, statut (propriétaire/locataire), type de logement ;</li>
-          <li><strong>Votre situation</strong> : type de chauffage actuel, nombre de personnes au foyer, tranche de revenu fiscal de référence ;</li>
-          <li><strong>Vos coordonnées</strong> : nom, adresse e-mail, numéro de téléphone.</li>
+          <li><strong>Votre logement</strong> : code postal et type de logement (maison ou appartement) ;</li>
+          <li><strong>Votre chauffage actuel</strong> : fioul, gaz ou autre ;</li>
+          <li><strong>Vos coordonnées</strong> : nom et numéro de téléphone.</li>
         </ul>
         <p>
           Ces informations servent <strong>exclusivement</strong> à étudier votre demande de devis
