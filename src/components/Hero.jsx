@@ -7,7 +7,7 @@ const Hero = () => {
     <section className={styles.hero}>
       <div className={`${styles.heroContent} container`}>
         <div className={styles.leftPanel} data-aos="fade-up">
-          <h1 className={styles.title}>Pompe à chaleur : jusqu'à 12 000 € d'aides cumulées possibles*</h1>
+          <h1 className={styles.title}>Pompe à chaleur : 1€ SEULEMENT sous conditions d'éligibilité*</h1>
           <p className={styles.subtitle}>
             Bénéficiez des aides mobilisables pour votre projet : MaPrimeRénov', primes CEE
             et, selon votre situation, aides locales. Étudiez votre pompe à chaleur air/eau,

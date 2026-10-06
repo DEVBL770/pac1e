@@ -6,8 +6,16 @@
 /* Le titre de la section redevient sombre pour être lisible sur fond clair */
 .sectionTitle { 
   font-size: 36px; 
-  margin-bottom: 60px;
+  margin-bottom: 20px; /* J'ai réduit un peu la marge car il y a le sous-titre en dessous maintenant */
   color: var(--primary-blue); /* On repasse à la couleur par défaut des titres */
+}
+
+/* --- NOUVEAU : Sous-titre de la section --- */
+.sectionSubtitle {
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 1.1rem;
+  color: var(--text-dark, #666); 
 }
 
 .benefitsGrid { 
@@ -28,7 +36,7 @@
   border-radius: 16px;
   color: var(--text-dark); /* Texte principal en couleur sombre */
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Modifié de "hidden" à "visible" pour que le badge ne soit pas coupé */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Une ombre subtile pour le relief */
 }
@@ -46,6 +54,8 @@
   );
   opacity: 0;
   transition: opacity 0.5s ease;
+  border-radius: 16px; /* On s'assure que le fond respecte les bords arrondis */
+  pointer-events: none; /* Empêche la lueur de bloquer les clics */
 }
 
 /* L'effet au survol est accentué */
@@ -83,4 +93,47 @@
   font-size: 28px;
   margin-bottom: 15px;
   border: 1px solid rgba(46, 205, 167, 0.2);
+}
+
+
+/* =========================================================
+   NOUVEAUX STYLES : MISE EN AVANT DE LA CARTE PAC À 1€ 
+   ========================================================= */
+
+/* Style pour faire ressortir la carte à 1€ par rapport aux autres */
+.highlightedCard {
+  border: 2px solid #FFD700; /* Bordure dorée plus épaisse */
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), #ffffff 40%); /* Léger reflet doré en haut à gauche */
+  transform: scale(1.02); /* On la rend très légèrement plus grande dès le départ */
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.15); /* Ombre légèrement dorée */
+}
+
+/* On garde le comportement au survol, mais on l'adapte pour la carte mise en avant */
+.highlightedCard:hover {
+  transform: scale(1.02) translateY(-10px);
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.25);
+  border-color: #FFC107; 
+}
+
+/* Badge "Offre spéciale" qui flotte au-dessus de la carte */
+.badgePromo {
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  background-color: #E63946; /* Rouge vif / Action */
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(230, 57, 70, 0.4);
+  z-index: 2;
+  animation: pulse 2s infinite; /* Petite animation pour attirer l'œil */
+}
+
+/* Animation de pulsation pour le badge */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
