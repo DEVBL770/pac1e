@@ -112,7 +112,7 @@ const MultiStepForm = () => {
     return (
       <div className={styles.formContainer}>
         <div className={styles.successMessage} role="status" aria-live="polite">
-          <h3>Demande envoyée ✅</h3>
+          <h3>Demande envoyée</h3>
           <p>
             Merci {formData.name.trim().split(/\s+/)[0]} ! Votre demande d'étude a bien été enregistrée.
             Un conseiller de <strong>GLOBAL ENVIRONNEMENT</strong> vous recontactera au numéro
@@ -137,7 +137,7 @@ const MultiStepForm = () => {
       <form noValidate onSubmit={handleSubmit} className={styles.formBody}>
         <fieldset className={styles.choiceGroup}>
           <legend>Votre logement <span aria-hidden="true">*</span></legend>
-          <div className={styles.choiceGrid}>
+          <div className={`${styles.choiceGrid} ${styles.choiceGrid2}`}>
             {propertyTypes.map((propertyType, index) => (
               <label
                 key={propertyType}

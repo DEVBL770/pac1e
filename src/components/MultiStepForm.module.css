@@ -16,6 +16,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  text-align: left;
 }
 
 .choiceGroup {
@@ -37,6 +38,10 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
+}
+
+.choiceGrid2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .choiceLabel {
@@ -79,7 +84,9 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  padding: 0 8px;
   border-radius: 7px;
+  line-height: 1.2;
 }
 
 .radioInput:focus-visible + .choiceText {
