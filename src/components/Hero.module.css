@@ -22,8 +22,12 @@
 .footnote { font-size: 14px; font-weight: 500; line-height: 1.5; opacity: 0.9; margin: 0; max-width: 520px; }
 .rightPanel { flex: 1; max-width: 450px; }
 @media (max-width: 992px) {
-  .hero { padding: 60px 0; }
-  .heroContent { flex-direction: column; text-align: center; }
-  .title { font-size: 30px; }
+  .hero { padding: 24px 0 40px; }
+  .heroContent { flex-direction: column; gap: 0; text-align: center; }
+  .leftPanel { display: contents; }
+  .title { order: 1; width: 100%; font-size: 30px; margin-bottom: 16px; }
+  .rightPanel { order: 2; width: 100%; max-width: 450px; margin: 0 auto 24px; }
+  .subtitle { order: 3; width: 100%; }
+  .footnote { order: 4; width: 100%; }
   .subtitle { font-size: 16px; margin-bottom: 20px; }
 }
