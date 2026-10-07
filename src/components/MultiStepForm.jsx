@@ -16,6 +16,7 @@ const MultiStepForm = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isTakingLong, setIsTakingLong] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const submittingRef = useRef(false);
   const propertyTypeRef = useRef(null);
@@ -68,6 +69,8 @@ const MultiStepForm = () => {
     if (submittingRef.current) return;
     submittingRef.current = true;
     setIsSubmitting(true);
+    setIsTakingLong(false);
+    const slowNoticeTimeout = window.setTimeout(() => setIsTakingLong(true), 8000);
 
     try {
       // Ces clés et leur ordre sont identiques à l'ancien formulaire pour conserver les colonnes Sheets ; les questions supprimées sont envoyées vides.
@@ -101,9 +104,11 @@ const MultiStepForm = () => {
     } catch (error) {
       submittingRef.current = false; // autorise une nouvelle tentative apres echec
       setErrors({
-        submit: "Une erreur est survenue lors de l'envoi. Vérifiez votre connexion puis réessayez : votre demande n'a pas été enregistrée.",
+        submit: "Nous n'avons pas pu confirmer l'enregistrement. Votre demande a peut-être été reçue : ne la renvoyez pas immédiatement. Appelez-nous au 01 89 21 39 31 pour vérifier.",
       });
     } finally {
+      window.clearTimeout(slowNoticeTimeout);
+      setIsTakingLong(false);
       setIsSubmitting(false);
     }
   };
@@ -255,6 +260,7 @@ const MultiStepForm = () => {
         </div>
 
         {errors.submit && <p className={`${styles.error} ${styles.submitError}`} role="alert">{errors.submit}</p>}
+        {isTakingLong && <p className={styles.legalNotice} role="status">La confirmation prend plus de temps que prévu. Veuillez patienter sans renvoyer la demande.</p>}
         <button
           type="submit"
           className={`cta-button ${styles.submitButton}`}
@@ -264,8 +270,7 @@ const MultiStepForm = () => {
           {isSubmitting ? 'Envoi en cours…' : "Demander mon étude d'aides"}
         </button>
         <p className={styles.legalNotice}>
-          En cliquant sur « Demander mon étude d'aides », vous acceptez d'être
-          recontacté(e) par GLOBAL ENVIRONNEMENT <strong>uniquement au sujet de votre
+          En envoyant cette demande, vous demandez à être recontacté(e) par GLOBAL ENVIRONNEMENT <strong>uniquement au sujet de votre
           projet</strong> (pompe à chaleur et/ou chauffe-eau thermodynamique), dans un
           délai maximum de 5 jours ouvrés. Vos données ne sont pas cédées à des
           partenaires pour d'autres sollicitations. Consultez notre{' '}
