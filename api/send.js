@@ -15,6 +15,8 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Configuration serveur incorrecte.' });
   }
 
+  const startedAt = Date.now();
+  let stage = 'forward';
   try {
     const response = await fetch(googleScriptUrl, {
       method: 'POST',
@@ -22,7 +24,10 @@ export default async function handler(req, res) {
       body: JSON.stringify(req.body),
     });
     
+    stage = 'parse_response';
+    console.info('lead_forward_response', { upstreamStatus: response.status, elapsedMs: Date.now() - startedAt });
     const result = await response.json();
+    stage = 'check_result';
 
     if (result.status === 'success') {
       return res.status(200).json({ message: 'Données envoyées avec succès.' });
@@ -30,6 +35,9 @@ export default async function handler(req, res) {
       throw new Error(result.message || 'Erreur Google Script.');
     }
   } catch (error) {
-    return res.status(500).json({ error: 'Erreur lors de l\'envoi des données.' });
+    // Une erreur de réponse ne prouve pas que l'Apps Script n'a pas déjà écrit la ligne.
+    // Ne jamais journaliser le corps de la demande, l'URL du script ou les coordonnées.
+    console.error('lead_forward_unconfirmed', { stage, elapsedMs: Date.now() - startedAt, errorName: error?.name });
+    return res.status(502).json({ error: 'Confirmation du traitement impossible.', code: 'UPSTREAM_UNCONFIRMED' });
   }
 }
