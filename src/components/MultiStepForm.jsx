@@ -18,16 +18,20 @@ const MultiStepForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isTakingLong, setIsTakingLong] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [privacyAcknowledged, setPrivacyAcknowledged] = useState(false);
+
   const submittingRef = useRef(false);
   const propertyTypeRef = useRef(null);
   const heatingTypeRef = useRef(null);
   const nameRef = useRef(null);
   const phoneRef = useRef(null);
   const postalCodeRef = useRef(null);
+  const privacyRef = useRef(null);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     const nextValue = name === 'postalCode' ? value.replace(/\D/g, '').slice(0, 5) : value;
+
     setFormData((currentData) => ({ ...currentData, [name]: nextValue }));
     setErrors((currentErrors) => {
       const nextErrors = { ...currentErrors };
@@ -50,6 +54,9 @@ const MultiStepForm = () => {
     if (!/^\d{5}$/.test(formData.postalCode)) {
       nextErrors.postalCode = 'Code postal à 5 chiffres.';
     }
+    if (!privacyAcknowledged) {
+      nextErrors.privacyAcknowledged = 'Cochez cette case pour demander à être recontacté(e).';
+    }
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) {
@@ -60,12 +67,13 @@ const MultiStepForm = () => {
         name: nameRef,
         phone: phoneRef,
         postalCode: postalCodeRef,
+        privacyAcknowledged: privacyRef,
       };
       fieldRefs[firstInvalidField].current?.focus();
       return;
     }
 
-    // Garde synchrone : un double clic dans le meme cycle ne doit pas re-soumettre.
+    // Garde synchrone : un double clic dans le même cycle ne doit pas soumettre deux fois.
     if (submittingRef.current) return;
     submittingRef.current = true;
     setIsSubmitting(true);
@@ -73,7 +81,7 @@ const MultiStepForm = () => {
     const slowNoticeTimeout = window.setTimeout(() => setIsTakingLong(true), 8000);
 
     try {
-      // Ces clés et leur ordre sont identiques à l'ancien formulaire pour conserver les colonnes Sheets ; les questions supprimées sont envoyées vides.
+      // Ordre et clés conservés pour la compatibilité avec le relais et Sheets.
       const payload = {
         postalCode: formData.postalCode,
         propertyStatus: '',
@@ -86,6 +94,7 @@ const MultiStepForm = () => {
         phone: formData.phone.trim(),
         source: 'PAC_2026_ADS',
       };
+
       const response = await fetch('/api/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -93,17 +102,15 @@ const MultiStepForm = () => {
       });
       if (!response.ok) throw new Error('Erreur serveur.');
 
-      // Signal de conversion pour Google Tag Manager : émis une seule fois,
-      // uniquement après confirmation du serveur, sans aucune donnée personnelle.
-      // La balise "Conversion Google Ads" dans GTM doit être déclenchée par cet événement.
+      // Conversion GTM uniquement après confirmation du serveur, sans données personnelles.
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-        'event': 'lead_submitted'
+        event: 'lead_submitted',
       });
 
       setIsSubmitted(true);
     } catch (error) {
-      submittingRef.current = false; // autorise une nouvelle tentative apres echec
+      submittingRef.current = false;
       setErrors({
         submit: "Nous n'avons pas pu confirmer l'enregistrement. Votre demande a peut-être été reçue : ne la renvoyez pas immédiatement. Appelez-nous au 01 89 21 39 31 pour vérifier.",
       });
@@ -140,6 +147,7 @@ const MultiStepForm = () => {
         <h3>Demandez votre étude d'aides</h3>
         <p>5 informations, puis un conseiller vous rappelle pour étudier votre projet.</p>
       </div>
+
       <form
         noValidate
         onSubmit={handleSubmit}
@@ -171,7 +179,11 @@ const MultiStepForm = () => {
               </label>
             ))}
           </div>
-          {errors.propertyType && <p id="propertyType-error" className={styles.error} role="alert">{errors.propertyType}</p>}
+          {errors.propertyType && (
+            <p id="propertyType-error" className={styles.error} role="alert">
+              {errors.propertyType}
+            </p>
+          )}
         </fieldset>
 
         <fieldset className={styles.choiceGroup}>
@@ -198,7 +210,11 @@ const MultiStepForm = () => {
               </label>
             ))}
           </div>
-          {errors.heatingType && <p id="heatingType-error" className={styles.error} role="alert">{errors.heatingType}</p>}
+          {errors.heatingType && (
+            <p id="heatingType-error" className={styles.error} role="alert">
+              {errors.heatingType}
+            </p>
+          )}
         </fieldset>
 
         <div className={styles.field}>
@@ -216,7 +232,9 @@ const MultiStepForm = () => {
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? 'name-error' : undefined}
           />
-          {errors.name && <p id="name-error" className={styles.error} role="alert">{errors.name}</p>}
+          {errors.name && (
+            <p id="name-error" className={styles.error} role="alert">{errors.name}</p>
+          )}
         </div>
 
         <div className={styles.contactGrid}>
@@ -236,8 +254,11 @@ const MultiStepForm = () => {
               aria-invalid={Boolean(errors.phone)}
               aria-describedby={errors.phone ? 'phone-error' : undefined}
             />
-            {errors.phone && <p id="phone-error" className={styles.error} role="alert">{errors.phone}</p>}
+            {errors.phone && (
+              <p id="phone-error" className={styles.error} role="alert">{errors.phone}</p>
+            )}
           </div>
+
           <div className={styles.field}>
             <label htmlFor="lead-postal">Code postal <span aria-hidden="true">*</span></label>
             <input
@@ -256,12 +277,55 @@ const MultiStepForm = () => {
               aria-invalid={Boolean(errors.postalCode)}
               aria-describedby={errors.postalCode ? 'postalCode-error' : undefined}
             />
-            {errors.postalCode && <p id="postalCode-error" className={styles.error} role="alert">{errors.postalCode}</p>}
+            {errors.postalCode && (
+              <p id="postalCode-error" className={styles.error} role="alert">
+                {errors.postalCode}
+              </p>
+            )}
           </div>
         </div>
 
-        {errors.submit && <p className={`${styles.error} ${styles.submitError}`} role="alert">{errors.submit}</p>}
-        {isTakingLong && <p className={styles.legalNotice} role="status">La confirmation prend plus de temps que prévu. Veuillez patienter sans renvoyer la demande.</p>}
+        <div className={styles.privacyRow}>
+          <input
+            ref={privacyRef}
+            id="privacy-acknowledged"
+            type="checkbox"
+            checked={privacyAcknowledged}
+            onChange={(event) => {
+              setPrivacyAcknowledged(event.target.checked);
+              setErrors((current) => {
+                const next = { ...current };
+                delete next.privacyAcknowledged;
+                return next;
+              });
+            }}
+            required
+            aria-invalid={Boolean(errors.privacyAcknowledged)}
+            aria-describedby={errors.privacyAcknowledged ? 'privacy-error' : undefined}
+          />
+          <label className={styles.legalNotice} htmlFor="privacy-acknowledged">
+            Je demande à être recontacté(e) par GLOBAL ENVIRONNEMENT (ISOLTIME)
+            au sujet de mon projet et j’ai pris connaissance de la{' '}
+            <a href="/politique-de-confidentialite">politique de confidentialité</a>.
+          </label>
+        </div>
+        {errors.privacyAcknowledged && (
+          <p id="privacy-error" className={styles.error} role="alert">
+            {errors.privacyAcknowledged}
+          </p>
+        )}
+
+        {errors.submit && (
+          <p className={`${styles.error} ${styles.submitError}`} role="alert">
+            {errors.submit}
+          </p>
+        )}
+        {isTakingLong && (
+          <p className={styles.legalNotice} role="status">
+            La confirmation prend plus de temps que prévu. Veuillez patienter sans renvoyer la demande.
+          </p>
+        )}
+
         <button
           type="submit"
           className={`cta-button ${styles.submitButton}`}
@@ -270,6 +334,7 @@ const MultiStepForm = () => {
         >
           {isSubmitting ? 'Envoi en cours…' : "Demander mon étude d'aides"}
         </button>
+
         <p className={styles.legalNotice}>
           En envoyant cette demande, vous demandez à être recontacté(e) par GLOBAL ENVIRONNEMENT <strong>uniquement au sujet de votre
           projet</strong> (pompe à chaleur et/ou chauffe-eau thermodynamique), dans un

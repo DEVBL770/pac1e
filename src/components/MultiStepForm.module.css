@@ -134,6 +134,24 @@
   gap: 12px;
 }
 
+.privacyRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.privacyRow input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--primary-blue);
+}
+
+.privacyRow label {
+  cursor: pointer;
+}
+
 .error { color: #d93025; font-size: 12px; margin: 0; }
 .submitError { margin-top: -4px; }
 
