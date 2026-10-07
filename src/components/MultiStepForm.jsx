@@ -134,7 +134,13 @@ const MultiStepForm = () => {
         <h3>Demandez votre étude d'aides</h3>
         <p>5 informations, puis un conseiller vous rappelle pour étudier votre projet.</p>
       </div>
-      <form noValidate onSubmit={handleSubmit} className={styles.formBody}>
+      <form
+        noValidate
+        onSubmit={handleSubmit}
+        className={styles.formBody}
+        data-gtm-form-interact-ignore="true"
+        data-gtm-form-submit-ignore="true"
+      >
         <fieldset className={styles.choiceGroup}>
           <legend>Votre logement <span aria-hidden="true">*</span></legend>
           <div className={`${styles.choiceGrid} ${styles.choiceGrid2}`}>
