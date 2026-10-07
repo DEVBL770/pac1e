@@ -84,6 +84,7 @@ const MultiStepForm = () => {
         name: formData.name.trim(),
         email: '',
         phone: formData.phone.trim(),
+        source: 'PAC_2026_ADS',
       };
       const response = await fetch('/api/send', {
         method: 'POST',
