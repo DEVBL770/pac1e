@@ -15,9 +15,9 @@ var SCRIPT_VERSION = 'ads-routing-v2';
 
 // Ordre EXACT des six colonnes de l'onglet ADS (valide par l'exploitant) :
 // timestamp, logement, chauffage, nom, telephone('texte), code postal('texte)
-function buildAdsRow_(data) {
+function buildAdsRow_(data, timestamp) {
   return [
-    new Date(),
+    timestamp,
     data.propertyType || '',
     data.heatingType || '',
     data.name || '',
@@ -27,9 +27,9 @@ function buildAdsRow_(data) {
 }
 
 // Ordre historique "Feuille 1" (longueur complete, champs inconnus = vides).
-function buildLegacyRow_(data) {
+function buildLegacyRow_(data, timestamp) {
   return [
-    new Date(),
+    timestamp,
     data.postalCode || '',
     data.propertyStatus || '',
     data.propertyType || '',
@@ -61,13 +61,14 @@ function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-    var adsTab = findTabByGid_(spreadsheet, ADS_TAB_GID);
-    if (!adsTab) throw new Error('Onglet ADS introuvable');
+    var timestamp = new Date();
 
     if (data && data.source === ADS_MARKER) {
+      var adsTab = findTabByGid_(spreadsheet, ADS_TAB_GID);
+      if (!adsTab) throw new Error('Onglet ADS introuvable');
       // --- Flux ADS uniquement (nouveau formulaire PAC) ---
       var tWrite0 = Date.now();
-      adsTab.appendRow(buildAdsRow_(data)); // aucun appendRow dans Feuille 1
+      adsTab.appendRow(buildAdsRow_(data, timestamp)); // aucun appendRow dans Feuille 1
       var writeMs = Date.now() - tWrite0;
 
       console.info('lead_write', {
@@ -88,12 +89,25 @@ function doPost(e) {
     if (!legacyTab) throw new Error('Onglet "' + LEGACY_TAB_NAME + '" introuvable.');
 
     var tWrite1 = Date.now();
-    legacyTab.appendRow(buildLegacyRow_(data));
+    legacyTab.appendRow(buildLegacyRow_(data, timestamp));
     var feuille1WriteMs = Date.now() - tWrite1;
 
-    var tWrite2 = Date.now();
-    adsTab.appendRow(buildAdsRow_(data)); // copie ADS identique a l'actuel
-    var adsCopyMs = Date.now() - tWrite2;
+    // Comme dans le script historique, un echec de la copie ADS ne fait pas
+    // echouer l'envoi deja enregistre dans Feuille 1.
+    var adsCopyMs = null;
+    try {
+      var legacyAdsTab = findTabByGid_(spreadsheet, ADS_TAB_GID);
+      if (!legacyAdsTab) throw new Error('Onglet ADS introuvable');
+      var tWrite2 = Date.now();
+      legacyAdsTab.appendRow(buildAdsRow_(data, timestamp));
+      adsCopyMs = Date.now() - tWrite2;
+    } catch (adsError) {
+      console.error('lead_ads_copy_failed', {
+        errorName: adsError.name,
+        totalMs: Date.now() - t0,
+        version: SCRIPT_VERSION
+      });
+    }
 
     console.info('lead_write', {
       target: LEGACY_TAB_NAME + '+ADS-copy',
